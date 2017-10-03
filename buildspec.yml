@@ -2,7 +2,6 @@ version: 0.1
 environment_variables:
     plaintext:
         S3_BUCKET: "vrtlmdn.io"
-        BUILD_ENV: "prod"
 phases:
     install:
         commands:
@@ -11,7 +10,7 @@ phases:
     build:
         commands:
             - echo Build started on `date`
-            - npm run build ${BUILD_ENV}
+            - npm run build
     post_build:
          commands:
             - aws s3 sync ./dist s3://${S3_BUCKET}
